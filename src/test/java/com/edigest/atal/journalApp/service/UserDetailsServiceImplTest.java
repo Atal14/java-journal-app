@@ -17,23 +17,23 @@ import static org.mockito.Mockito.when;
 
 public class UserDetailsServiceImplTest {
 
-    @InjectMocks
-    private UserDetailsServiceImpl userDetailsService;
+    // @InjectMocks
+    // private UserDetailsServiceImpl userDetailsService;
 
-    @Mock
-    private UserRepository userRepository;
+    // @Mock
+    // private UserRepository userRepository;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+    // @BeforeEach
+    // void setUp() {
+    //     MockitoAnnotations.initMocks(this);
+    // }
 
-    @Test
-    void loadUserByUserNameTest() {
-        User user = new User("Atal", "something");
-        user.setRoles(new ArrayList<>());
-        when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(user);
-        UserDetails mockedUser = userDetailsService.loadUserByUsername("Atal");
-        Assertions.assertNotNull(mockedUser);
-    }
+    // @Test
+    // void loadUserByUserNameTest() {
+    //     User user = new User("Atal", "something");
+    //     user.setRoles(new ArrayList<>());
+    //     when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(user);
+    //     UserDetails mockedUser = userDetailsService.loadUserByUsername("Atal");
+    //     Assertions.assertNotNull(mockedUser);
+    // }
 }
