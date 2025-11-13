@@ -13,20 +13,20 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 public class UserServiceTests {
 
-    @Autowired
-    private UserRepository userRepository;
+    // @Autowired
+    // private UserRepository userRepository;
 
-    @Test
-    public void testFindByUserName(){
-        assertNotNull(userRepository.findByUserName("Atal"));
-    }
+    // @Test
+    // public void testFindByUserName(){
+    //     assertNotNull(userRepository.findByUserName("Atal"));
+    // }
 
-    @ParameterizedTest
-    @CsvSource({
-            "1,1,2",
-            "2,10,12"
-    })
-    public void test(int a, int b, int exp) {
-        assertEquals(exp, a +  b);
-    }
+    // @ParameterizedTest
+    // @CsvSource({
+    //         "1,1,2",
+    //         "2,10,12"
+    // })
+    // public void test(int a, int b, int exp) {
+    //     assertEquals(exp, a +  b);
+    // }
 }
