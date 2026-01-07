@@ -2,6 +2,7 @@ package com.edigest.atal.journalApp.service;
 
 import com.edigest.atal.journalApp.api.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -9,8 +10,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class WeatherService {
-    //Should be enviroment variables.S
-    private static final String apiKey = "1";
+
+    @Value("${weather.api.key}")
+    private String apiKey;
 
     private static final String fullUrl = "http://api.weatherstack.com/current?access_key=YOUR_ACCESS_KEY&query=CITY";
 

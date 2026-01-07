@@ -51,16 +51,16 @@ public class UserController {
 
     @GetMapping("/greeting")
     public ResponseEntity<?> greeting() {
-        // Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // WeatherResponse weatherResponse = weatherService.getWeather("Lahore");
-        // String greeting = "";
-        // if (weatherResponse != null) {
-        //     greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelsLike();
-        // }
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+         WeatherResponse weatherResponse = weatherService.getWeather("Lahore");
+         String greeting = "";
+         if (weatherResponse != null) {
+             greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelsLike();
+         }
 
         
-        // return  new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
-        return  new ResponseEntity<>("Hi " + this.playWithStrings() + " ", HttpStatus.OK);
+         return  new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
+//        return  new ResponseEntity<>("Hi " + this.playWithStrings() + " ", HttpStatus.OK);
     }
 
     //programming tests
@@ -69,10 +69,10 @@ public class UserController {
 
         List<String> finalElements = new ArrayList<>();
         int j = 0;
-        for (int i=0; i<elements.length; i++) {
+        for (String element : elements) {
             j++;
             if (j == 3) {
-                finalElements.add(elements[i]);
+                finalElements.add(element);
                 j = 0;
             }
         }
@@ -144,8 +144,8 @@ public class UserController {
         for (String name : names) {
             boolean found = false;
 
-            for (String unqiueNames : uniqueNames) {
-                if (unqiueNames.equalsIgnoreCase(name)) {
+            for (String uniqueName : uniqueNames) {
+                if (uniqueName.equalsIgnoreCase(name)) {
                     found = true;
                     break;
                 }
@@ -173,8 +173,8 @@ public class UserController {
 
     private List<String> playWithStrings() {
         String[] fruits = {"Apple", "Orange", "Banana"};
-        for (int i=0; i<fruits.length; i++) {
-            String fruit = fruits[i];
+        for (String s : fruits) {
+            String fruit = s;
             fruit = fruit + "s";
         }
         return Arrays.asList(fruits);
