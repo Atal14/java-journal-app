@@ -1,6 +1,7 @@
 package com.edigest.atal.journalApp.service;
 
 import com.edigest.atal.journalApp.entity.User;
+import com.edigest.atal.journalApp.repository.UserCriteriaRepository;
 import com.edigest.atal.journalApp.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserCriteriaRepository userCriteriaRepository;
+
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Transactional
@@ -58,5 +63,9 @@ public class UserService {
 
     public void deleteById(ObjectId id) {
         userRepository.deleteById(id);
+    }
+
+    public List<User> getUsersBySA() {
+        return userCriteriaRepository.getUsersForSA();
     }
 }

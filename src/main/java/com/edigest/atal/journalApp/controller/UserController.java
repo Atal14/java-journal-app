@@ -63,6 +63,12 @@ public class UserController {
 //        return  new ResponseEntity<>("Hi " + this.playWithStrings() + " ", HttpStatus.OK);
     }
 
+    @GetMapping("/sa-users")
+    public ResponseEntity<List<User>> getUsers() {
+        List<User> users = userService.getUsersBySA();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
     //programming tests
     private List<String> thridEle() {
         String[] elements = {"Hi", "Hello", "How", "Atal", "Sohail", "Huzaifa", "Ali", "Bit", "Logix"};
