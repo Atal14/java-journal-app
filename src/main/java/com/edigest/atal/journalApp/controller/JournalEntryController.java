@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.edigest.atal.journalApp.entity.JournalEntry;
 import com.edigest.atal.journalApp.service.JournalEntryService;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +71,7 @@ public class JournalEntryController {
     public ResponseEntity<?> updateEntry(@PathVariable final ObjectId id, @RequestBody JournalEntry entry) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        User user = userService.findByUserName(userName);
+        // User user = userService.findByUserName(userName);
         Optional<JournalEntry> journalEntry = journalEntryService.getJournalById(id);
         if (journalEntry.isPresent()) {
             JournalEntry old = journalEntry.get();
