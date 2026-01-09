@@ -2,6 +2,7 @@ package com.edigest.atal.journalApp.entity;
 
 import java.time.LocalDateTime;
 
+import com.edigest.atal.journalApp.enums.Sentiment;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -24,5 +25,6 @@ public class JournalEntry {
     @NonNull
     private String title;
     private LocalDateTime date;
+    private Sentiment sentiment;
     
 }
