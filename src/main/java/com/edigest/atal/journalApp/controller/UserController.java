@@ -47,17 +47,16 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/greeting")
-    public ResponseEntity<?> greeting() {
-         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-         WeatherResponse weatherResponse = weatherService.getWeather("Lahore");
-         String greeting = "";
-         if (weatherResponse != null) {
-             greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelsLike();
-         }
+    @GetMapping("/greeting/{city}")
+    public ResponseEntity<?> greeting(@PathVariable String city) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherResponse weatherResponse = weatherService.getWeather(city);
+        String greeting = "";
+        if (weatherResponse != null) {
+            greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelsLike();
+        }
 
-        
-         return  new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
+        return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
     }
 
     @GetMapping("/sa-users")
