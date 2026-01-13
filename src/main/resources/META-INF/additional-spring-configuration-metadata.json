@@ -1,0 +1,14 @@
+{
+    "properties": [
+        {
+            "name": "jwt.secret.key",
+            "type": "java.lang.String",
+            "description": "String for creating jwt hash"
+        },
+        {
+            "name": "weather.api.key",
+            "type": "java.lang.String",
+            "description": "Weather Api Key'"
+        }
+    ]
+}
