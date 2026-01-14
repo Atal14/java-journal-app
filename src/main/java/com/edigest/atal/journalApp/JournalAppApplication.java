@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
+import jakarta.validation.constraints.NotNull;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -20,7 +21,7 @@ public class JournalAppApplication {
 	}
 
 	@Bean
-	public PlatformTransactionManager falana(MongoDatabaseFactory dbFactory) {
+	public PlatformTransactionManager dbFactory(@NotNull MongoDatabaseFactory dbFactory) {
 		return new MongoTransactionManager(dbFactory);
 	}
 
