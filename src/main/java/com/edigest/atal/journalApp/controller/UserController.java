@@ -4,6 +4,9 @@ import com.edigest.atal.journalApp.api.response.WeatherResponse;
 import com.edigest.atal.journalApp.entity.User;
 import com.edigest.atal.journalApp.service.UserService;
 import com.edigest.atal.journalApp.service.WeatherService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name = "User APIs", description = "Read, Update & Delete User")
 public class UserController {
 
     @Autowired

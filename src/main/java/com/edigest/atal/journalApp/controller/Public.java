@@ -5,6 +5,7 @@ import com.edigest.atal.journalApp.service.UserDetailsServiceImpl;
 import com.edigest.atal.journalApp.service.UserService;
 import com.edigest.atal.journalApp.utils.JwtUtil;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 @RequestMapping("/public")
+@Tag(name = "Public APIs")
 public class Public {
 
     @Autowired
