@@ -1,5 +1,7 @@
 package com.edigest.atal.journalApp.controller;
 
+import com.edigest.atal.journalApp.dto.LoginDTO;
+import com.edigest.atal.journalApp.dto.BasicUserDTO;
 import com.edigest.atal.journalApp.entity.User;
 import com.edigest.atal.journalApp.service.UserDetailsServiceImpl;
 import com.edigest.atal.journalApp.service.UserService;
@@ -40,12 +42,17 @@ public class Public {
     }
 
     @PostMapping("/signup")
-    public User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public User createUser(@RequestBody BasicUserDTO user) {
+        User newUser = new User();
+        newUser.setUserName(user.getUserName());
+        newUser.setPassword(user.getPassword());
+        newUser.setEmail(user.getEmail());
+        newUser.setSentimentAnalysis(user.isSentimentAnalysis());
+        return userService.saveUser(newUser);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<String> login(@RequestBody LoginDTO user) {
         try {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));

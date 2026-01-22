@@ -1,10 +1,12 @@
 package com.edigest.atal.journalApp.controller;
 
 import com.edigest.atal.journalApp.cache.AppCache;
+import com.edigest.atal.journalApp.dto.BasicUserDTO;
 import com.edigest.atal.journalApp.entity.User;
 import com.edigest.atal.journalApp.service.EMailService;
 import com.edigest.atal.journalApp.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +30,24 @@ public class Admin {
     @Autowired
     EMailService eMailService;
 
+    @Operation(summary = "Get all users along with their journal Entries")
     @GetMapping("all-users")
     public ResponseEntity<?> getAllUsers() {
         List<User> users = userService.getAll();
-        if(!users.isEmpty()) {
+        if (!users.isEmpty()) {
             return new ResponseEntity<>(users, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("create-admin")
-    public ResponseEntity<?> createAdminUser(@RequestBody User user) {
-        User createdUser = userService.createAdminUser(user);
+    public ResponseEntity<?> createAdminUser(@RequestBody BasicUserDTO user) {
+        User adminUser = new User();
+        adminUser.setUserName(user.getUserName());
+        adminUser.setPassword(user.getPassword());
+        adminUser.setEmail(user.getEmail());
+        adminUser.setSentimentAnalysis(user.isSentimentAnalysis());
+        User createdUser = userService.createAdminUser(adminUser);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
