@@ -14,7 +14,7 @@ import java.util.Map;
 public class AppCache {
     public Map<String, String> appCache;
 
-    @Autowired()
+    @Autowired
     private ConfigJournalAppRepository configJournalAppRepository;
 
     @PostConstruct()
